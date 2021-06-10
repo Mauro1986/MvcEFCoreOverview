@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,7 +26,13 @@ namespace MvcEFCoreOverview
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<BookContext>();
+            /*OPTIE A     services.AddDbContext<BookContext>();*/ ///////////////////////////////////////////////////////
+            
+            /*Optie B* gets hard coded conn string /     
+             * /*services.AddDbContext<BookContext>(options => options.UseSqlServer("Server=LAPTOP-AO42BIR6\\SQLEXPRESS;Database=BookEF;Integrated Security=True;"));//////////////////////////*/
+           
+            /*OPTIE C* gets con string from the appsettings .json*/
+            services.AddDbContext<BookContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
