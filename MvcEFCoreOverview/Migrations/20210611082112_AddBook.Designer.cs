@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MvcEFCoreOverview.Data;
 
 namespace MvcEFCoreOverview.Migrations
 {
     [DbContext(typeof(BookContext))]
-    partial class BookContextModelSnapshot : ModelSnapshot
+    [Migration("20210611082112_AddBook")]
+    partial class AddBook
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,12 +51,11 @@ namespace MvcEFCoreOverview.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<int>("YearPublished")
-                        .HasColumnType("int")
-                        .HasColumnName("Published");
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
-                    b.ToTable("tbl_Books");
+                    b.ToTable("Books");
                 });
 #pragma warning restore 612, 618
         }

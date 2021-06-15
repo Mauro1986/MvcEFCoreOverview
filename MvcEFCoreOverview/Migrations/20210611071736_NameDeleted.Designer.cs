@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MvcEFCoreOverview.Data;
 
 namespace MvcEFCoreOverview.Migrations
 {
     [DbContext(typeof(BookContext))]
-    partial class BookContextModelSnapshot : ModelSnapshot
+    [Migration("20210611071736_NameDeleted")]
+    partial class NameDeleted
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,18 +45,12 @@ namespace MvcEFCoreOverview.Migrations
                     b.Property<int>("Pages")
                         .HasColumnType("int");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
                     b.Property<int>("YearPublished")
-                        .HasColumnType("int")
-                        .HasColumnName("Published");
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
-                    b.ToTable("tbl_Books");
+                    b.ToTable("Books");
                 });
 #pragma warning restore 612, 618
         }

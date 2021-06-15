@@ -15,12 +15,13 @@ namespace MvcEFCoreOverview.Data
         }
 
         public DbSet<Book> Books { get; set; }
+        public DbSet<BookDetails> BookDetails { get; set; }
 
         //Optie A
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer("Server=LAPTOP-AO42BIR6\\SQLEXPRESS;Database=BookEF;Integrated Security=True;");
-        //    base.OnConfiguring(optionsBuilder);
-        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=LAPTOP-AO42BIR6\\SQLEXPRESS;Database=BookEF;Integrated Security=True;");
+            base.OnConfiguring(optionsBuilder);
+        }
     }
 }

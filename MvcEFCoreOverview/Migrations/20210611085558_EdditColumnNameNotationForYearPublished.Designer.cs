@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MvcEFCoreOverview.Data;
 
 namespace MvcEFCoreOverview.Migrations
 {
     [DbContext(typeof(BookContext))]
-    partial class BookContextModelSnapshot : ModelSnapshot
+    [Migration("20210611085558_EdditColumnNameNotationForYearPublished")]
+    partial class EdditColumnNameNotationForYearPublished
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,7 +56,7 @@ namespace MvcEFCoreOverview.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("tbl_Books");
+                    b.ToTable("Books");
                 });
 #pragma warning restore 612, 618
         }
